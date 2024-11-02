@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shoping_ui_sample/controller/homescreen_controller.dart';
+import 'package:shoping_ui_sample/view/cartscreen/cartscreen.dart';
 
 import 'package:shoping_ui_sample/view/productdetailsscreen/productdetailsscreen.dart';
 
@@ -77,9 +78,18 @@ class _HomescreenState extends State<Homescreen> {
                   ),
                   label: "Saved"),
               NavigationDestination(
-                  icon: Icon(
-                    Icons.local_mall_outlined,
-                    size: 30,
+                  icon: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Cartscreen(),
+                          ));
+                    },
+                    child: Icon(
+                      Icons.local_mall_outlined,
+                      size: 30,
+                    ),
                   ),
                   label: "cart"),
               NavigationDestination(

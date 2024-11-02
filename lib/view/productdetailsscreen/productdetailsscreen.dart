@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shoping_ui_sample/controller/product_detailsscreen_controller.dart';
+import 'package:shoping_ui_sample/view/cartscreen/cartscreen.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final int productId;
@@ -230,29 +231,39 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     )
                                   ],
                                 ),
-                                Container(
-                                  height: 50,
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 25,
-                                      ),
-                                      Icon(
-                                        Icons.local_mall_outlined,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        "add to cart",
-                                        style: TextStyle(color: Colors.white),
-                                      )
-                                    ],
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Cartscreen(),
+                                        ));
+                                  },
+                                  child: Container(
+                                    height: 50,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 25,
+                                        ),
+                                        Icon(
+                                          Icons.local_mall_outlined,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          "add to cart",
+                                          style: TextStyle(color: Colors.white),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 )
                               ],
