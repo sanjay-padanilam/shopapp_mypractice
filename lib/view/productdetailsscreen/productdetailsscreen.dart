@@ -1,5 +1,7 @@
+import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shoping_ui_sample/controller/cartscreen_controller.dart';
 import 'package:shoping_ui_sample/controller/product_detailsscreen_controller.dart';
 import 'package:shoping_ui_sample/view/cartscreen/cartscreen.dart';
 
@@ -123,13 +125,25 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ),
                                   Row(
                                     children: [
-                                      Icon(
-                                        Icons.star_rate_outlined,
-                                        color:
-                                            Color.fromARGB(255, 204, 185, 12),
+                                      RatingBar.readOnly(
+                                        size: 20,
+                                        filledIcon: Icons.star,
+                                        emptyIcon: Icons.star_border,
+                                        initialRating: productdetailscontroller
+                                                .product!.rating!.rate ??
+                                            0,
+                                        maxRating: 5,
                                       ),
-                                      Text(productdetailscontroller.product
-                                          .toString())
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "${productdetailscontroller.product!.rating!.count}/rating",
+                                        style: TextStyle(
+                                            color: Colors.amber,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      )
                                     ],
                                   ),
                                   SizedBox(
@@ -233,6 +247,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 ),
                                 InkWell(
                                   onTap: () {
+                                    context
+                                        .read<CartScreenController>()
+                                        .addProduct(
+                                            productdetailscontroller.product!);
+                                    context
+                                        .read<CartScreenController>()
+                                        .getAllProducts();
+
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

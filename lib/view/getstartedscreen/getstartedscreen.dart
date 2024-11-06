@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shoping_ui_sample/controller/cartscreen_controller.dart';
+
 import 'package:shoping_ui_sample/view/homescreen/homescreen.dart';
 
-class GetStartedScreen extends StatelessWidget {
+class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({super.key});
+
+  @override
+  State<GetStartedScreen> createState() => _GetStartedScreenState();
+}
+
+class _GetStartedScreenState extends State<GetStartedScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) async {
+        await context.read<CartScreenController>().initDb();
+      },
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
