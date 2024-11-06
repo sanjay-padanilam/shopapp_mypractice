@@ -236,8 +236,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   children: [
                                     Text("Price"),
                                     Text(
-                                      productdetailscontroller.product!.price
-                                          .toString(),
+                                      "\$ ${productdetailscontroller.product!.price.toString()}",
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold,

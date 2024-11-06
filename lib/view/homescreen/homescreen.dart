@@ -256,10 +256,7 @@ class _HomescreenState extends State<Homescreen> {
                                                         fontSize: 20),
                                                   ),
                                                   Text(
-                                                      providerbj
-                                                          .productlist[index]
-                                                          .price
-                                                          .toString(),
+                                                      "\$ ${providerbj.productlist[index].price.toString()}",
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontWeight:
