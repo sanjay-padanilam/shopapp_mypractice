@@ -81,4 +81,8 @@ class CartScreenController with ChangeNotifier {
     }
     log(totalcartvalue.toString());
   }
+
+  Future<void> clearTable() async {
+    await database.delete("Cart");
+  }
 }

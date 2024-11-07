@@ -263,6 +263,7 @@ class _CartscreenState extends State<Cartscreen> {
       ),
       (route) => false,
     );
+    context.read<CartScreenController>().clearTable();
   }
 
   void handleExternalWalletSelected(ExternalWalletResponse response) {
