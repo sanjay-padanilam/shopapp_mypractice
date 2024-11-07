@@ -83,9 +83,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       image: DecorationImage(
                                           image: NetworkImage(
                                               productdetailscontroller
-                                                      .product?.image
-                                                      .toString() ??
-                                                  ""))),
+                                                  .product!.image
+                                                  .toString()))),
                                 ),
                                 Positioned(
                                   top: 20,
