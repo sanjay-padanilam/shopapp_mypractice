@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:shoping_ui_sample/controller/cartscreen_controller.dart';
+import 'package:shoping_ui_sample/view/paymentsucessscreen/payment_success_screen.dart';
 
 class Cartscreen extends StatefulWidget {
   const Cartscreen({super.key});
@@ -255,14 +256,13 @@ class _CartscreenState extends State<Cartscreen> {
   }
 
   void handlePaymentSuccessResponse(PaymentSuccessResponse response) {
-    /*
-    * Payment Success Response contains three values:
-    * 1. Order ID
-    * 2. Payment ID
-    * 3. Signature
-    * */
-    showAlertDialog(
-        context, "Payment Successful", "Payment ID: ${response.paymentId}");
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PaymentSuccessScreen(),
+      ),
+      (route) => false,
+    );
   }
 
   void handleExternalWalletSelected(ExternalWalletResponse response) {
